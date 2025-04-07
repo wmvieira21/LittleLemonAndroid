@@ -2,6 +2,7 @@ package com.example.littlelemoncompose.screens
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Scaffold
@@ -36,7 +37,7 @@ fun HomePage(username: String?, navController: NavHostController) {
             TopAppBar(drawerState, scope)
         }, bottomBar = {
             MyBottomNavbar(navController = navController)
-        }) { it ->
+        }, modifier = Modifier.systemBarsPadding()) { it ->
             Column(modifier = Modifier.padding(it)) {
                 UpperPanel()
                 LowerPanel()

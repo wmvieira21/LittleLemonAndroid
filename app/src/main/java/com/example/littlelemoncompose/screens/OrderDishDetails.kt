@@ -2,6 +2,7 @@ package com.example.littlelemoncompose.screens
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -14,7 +15,7 @@ import com.example.littlelemoncompose.components.MyBottomNavbar
 fun OrderDishDetails(navController: NavHostController) {
     Scaffold(topBar = { com.example.littlelemoncompose.components.TopAppBar() }, bottomBar = {
         MyBottomNavbar(navController = navController)
-    }) { it ->
+    }, modifier = Modifier.systemBarsPadding()) { it ->
         Column(modifier = Modifier.padding(it)) {}
     }
 }

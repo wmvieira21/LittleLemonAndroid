@@ -1,8 +1,5 @@
-package com.example.littlelemoncompose.models
+package com.example.littlelemoncompose.data
 
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import com.example.littlelemoncompose.R
 
 data class Dish(val tittle: String, val price: String, val description: String, val image: Int) {}
