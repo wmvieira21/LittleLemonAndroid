@@ -37,6 +37,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -52,6 +54,7 @@ fun LoginScreen(navHostController: NavHostController, modifier: Modifier = Modif
     var normalClicks by rememberSaveable { mutableIntStateOf(0) }
     var longClicks by rememberSaveable { mutableIntStateOf(0) }
     var username by rememberSaveable { mutableStateOf("admin") }
+    var password by rememberSaveable { mutableStateOf("admin") }
 
     Column(
         verticalArrangement = Arrangement.Center,
@@ -71,14 +74,16 @@ fun LoginScreen(navHostController: NavHostController, modifier: Modifier = Modif
         TextField(username,
             onValueChange = { s: String -> username = s },
             label = { Text(text = "username") })
-        TextField("", onValueChange = {}, label = { Text(text = "password") })
+        TextField(password,
+            onValueChange = { s: String -> password = s },
+            visualTransformation = PasswordVisualTransformation(),
+            label = { Text(text = "password") })
 
         Button(
             onClick = {
                 navHostController.navigate(Home.route + "/${username}")
                 //Toast.makeText(context, "Tks for logging in!", Toast.LENGTH_SHORT).show()
-            },
-            colors = ButtonDefaults.buttonColors(LittleLemonColors.green)
+            }, colors = ButtonDefaults.buttonColors(LittleLemonColors.green)
         ) {
             Text(text = "Login", color = Color(0xFFEDEFEE))
         }
@@ -111,15 +116,12 @@ fun Modifier.closeKeyboardOnTap(): Modifier = composed {
     val focusManager = LocalFocusManager.current
     val keyboardController = LocalSoftwareKeyboardController.current
 
-    this.then(
-        Modifier.clickable(
-            interactionSource = remember { MutableInteractionSource() },
-            indication = null
-        ) {
-            focusManager.clearFocus()
-            keyboardController?.hide()
-        }
-    )
+    this.then(Modifier.clickable(
+        interactionSource = remember { MutableInteractionSource() }, indication = null
+    ) {
+        focusManager.clearFocus()
+        keyboardController?.hide()
+    })
 }
 
 @Preview(showBackground = true)
