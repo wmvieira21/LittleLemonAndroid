@@ -10,12 +10,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.littlelemoncompose.DishDetails
 import com.example.littlelemoncompose.Home
 import com.example.littlelemoncompose.Login
-import com.example.littlelemoncompose.OrderDishDetail
+import com.example.littlelemoncompose.screens.DishDetails
 import com.example.littlelemoncompose.screens.HomePage
 import com.example.littlelemoncompose.screens.LoginScreen
-import com.example.littlelemoncompose.screens.OrderDishDetails
 import com.example.littlelemoncompose.ui.theme.LittleLemonComposeTheme
 
 
@@ -40,7 +40,6 @@ fun MyNavigation() {
             LoginScreen(navController)
         }
 
-        //homepage com username da tela de login
         composable(
             Home.route + "/{${Home.USERNAME}}", arguments = listOf(navArgument(Home.USERNAME) {
                 type = NavType.StringType
@@ -49,11 +48,13 @@ fun MyNavigation() {
             HomePage(it.arguments?.getString(Home.USERNAME), navController)
         }
 
-        composable(Home.route) {
-            HomePage("", navController)
-        }
-        composable(OrderDishDetail.route) {
-            OrderDishDetails(navController)
+        composable(
+            DishDetails.route + "/{${DishDetails.argDishId}}",
+            arguments = listOf(navArgument(DishDetails.argDishId) {
+                type = NavType.StringType
+            })
+        ) {
+            DishDetails(it.arguments?.getString(DishDetails.argDishId), navController)
         }
     }
 }

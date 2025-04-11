@@ -4,11 +4,9 @@
     <string name="title_activity_home_page">HomePage.kt</string>
     <string name="restaurant_name_text">Little Lemon</string>
     <string name="restaurant_city_text">Chicago</string>
-    <string name="restaurant_desc_text">We\'re family onwed mediterranian restaurrant, focused on traditional recipes served owith a modern twist</string>
-    <string name="order_button_text">Order take away</string>
-
+    <string name="description">We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</string>
+    <string name="order_button_text">Order Take Away</string>
     <string name="card_tittle_text">Weekly specials</string>
-    <string name="dish_tittle_text">Greek Salad</string>
-    <string name="dish_desc_text">The famous Greek Salad The famous Greek Salad The famous Greek Salad</string>
-    <string name="dish_price_text">$12.99</string>
+    <string name="add_for">Add for</string>
+    <string name="order_finish_message">Thank you for choosing us!</string>
 </resources>
